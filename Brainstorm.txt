@@ -1,9 +1,0 @@
-Ideas:
-    -Spotify and Wiki
-        -wiki page to artist playing
-        -concerts?
-        -instagram?
-        -lyrics?
-            -https://rapidapi.com/musixmatch.com/api/musixmatch
-    -Memes
-        -to youtube
