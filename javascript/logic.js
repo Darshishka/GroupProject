@@ -29,6 +29,7 @@ var dogName;
 $('#breed_search').on('input', function(e) {
   var search_str = $(this).val();
   searchBreeds(search_str);
+  // Giphy API 
 });
 
 function searchBreeds(search_str) {
@@ -98,6 +99,26 @@ function getDogByBreed(breed_id) {
     description = data[0].breeds[0].description;
     dogData.push(description);
 //use nameToGet for ajax call to giphy
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + name + '&api_key=7ilylj0XRkujsH92cnfoMuyrE6DNoy9z&limit=5';
+    console.log(queryURL) 
+    $.ajax({
+      url: queryURL,
+      method: "GET" 
+    }) 
+    .then(function(results){
+      $('#gifImage').empty();
+      console.log(results.data) 
+      var myArray = results.data
+      for (var j = 0; j <myArray.length; j++){
+        console.log(myArray[j].url); 
+      var gifURL = myArray[j].images.fixed_height_small.url; 
+      var gif = $('<img>'); 
+      gif.attr('src', gifURL); 
+      $("#gifImage").append(gif);  
+      }
+    }) 
+
+
     $("#under-image-text").empty();
     if (data.length == 0) {
       // if there are no images returned
@@ -136,4 +157,6 @@ function displayBreed(image) {
 
 // call the getBreeds function which will load all the Dog breeds into the select control
 getBreeds();
+
+
 

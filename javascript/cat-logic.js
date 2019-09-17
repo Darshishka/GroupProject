@@ -127,7 +127,26 @@ function getCatByBreed(breed_id) {
     vocalisation = data[0].breeds[0].vocalisation;
     catData.push(vocalisation);
 //use nameToGet for ajax call to giphy
-    $("#under-image-text").empty();
+var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + name + '&api_key=7ilylj0XRkujsH92cnfoMuyrE6DNoy9z&limit=5';
+console.log(queryURL) 
+$.ajax({
+  url: queryURL,
+  method: "GET" 
+}) 
+.then(function(results){
+  $('#gifImage').empty();
+  console.log(results.data) 
+  var myArray = results.data
+  for (var j = 0; j <myArray.length; j++){
+    console.log(myArray[j].url); 
+  var gifURL = myArray[j].images.fixed_height_small.url; 
+  var gif = $('<img>'); 
+  gif.attr('src', gifURL); 
+  $("#gifImage").append(gif);  
+  }
+}) 
+
+$("#under-image-text").empty();
     if (data.length == 0) {
       // if there are no images returned
       clearBreed();
