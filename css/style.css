@@ -11,3 +11,12 @@ img {
 .table {
     float: left;
 }
+
+.a{
+    text-decoration: none;
+}
+
+.btn{
+    background-color:yellowgreen;
+    text-align: center;
+}
