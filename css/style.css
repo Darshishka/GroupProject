@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
     padding: 0;
     margin: 30px;
@@ -33,4 +34,18 @@ body{
     color: firebrick;
     font-size: 50px;
     font-family: fantasy;
+=======
+.jumbotron, #jumbo-tagline {
+    color: navy;
+}
+body {
+    background-color: lightblue;
+}
+img {
+    max-width: 90%;
+    max-height: 500px;
+}
+.table {
+    float: left;
+>>>>>>> 2d57f7be942dbad50dad09119ed74122002cab67
 }

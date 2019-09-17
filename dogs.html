@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hot Dog</title>
-    <!--CSS link-->
-    <link rel="stylesheet" href="css/style.css">
     <!--Bootstrap link-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--jQuery link-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap extension -->
+    <link rel="stylesheet" href="css/bootstrap-extension.css">
+    <!--CSS link-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+<<<<<<< HEAD:index.html
      <div class="jumbotron bg-primary">
          <h1 class="text-center">Rough Rough</h1>
          <p class="text-center">Learn about your doggo!</p>
+=======
+     <div class="jumbotron m-3 bg-sky">
+         <h1 class="text-center">Dog Breeds</h1>
+         <p id="jumbo-tagline" class="text-center">Fetch info about your favorite breed!</p>
+>>>>>>> 2d57f7be942dbad50dad09119ed74122002cab67:dogs.html
      </div>
      <br>
      <div class="container">
@@ -28,6 +33,7 @@
                     <option></option>
                 </select>
                 <br>
+<<<<<<< HEAD:index.html
                 <strong><div class="form-group text-center">
                     <!-- <input class="form-control" id="breed_search" type="text"> -->
                     <br>
@@ -42,12 +48,27 @@
                     </div></strong>
               
 
+=======
+                 <div class="text-center">
+                    <br>
+                    <div id="breed_data">
+                      <img class="center" id="breed_image" src="" />
+                      <p id="under-image-text">
+                        Ready to retrieve you data!
+                      </p>
+                      <br>
+                      <table class="table border" id="breed_data_table">
+                      </table>
+                    </div>
+>>>>>>> 2d57f7be942dbad50dad09119ed74122002cab67:dogs.html
                 </div>
              </div>
          </div>
      </div>
-
-      
-    <script src="logic.js" type="text/javascript"></script>
+     <div id="gifImage" class=""></div>
+    <!--jQuery link-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascript/bootstrap-extension.js"></script>
+    <script src="javascript/logic.js" type="text/javascript"></script>
 </body>
 </html>

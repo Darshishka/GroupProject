@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hot Dog</title>
+    <!--Bootstrap link-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap extension -->
+    <link rel="stylesheet" href="css/bootstrap-extension.css">
+    <!--CSS link-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+     <div class="jumbotron m-3 bg-sky">
+         <h1 class="text-center">Cat Breeds</h1>
+         <p id="jumbo-tagline" class="text-center">Are you ready meow?</p>
+     </div>
+     <br>
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-12">
+                 <h2 class="text-center">Search breed!</h2>
+                 <div id="banner-message" class="text-center">            
+                  <select class="breed_select">
+                    <option></option>
+                </select>
+                <br>
+                 <div class="text-center">
+                    <br>
+                    <div id="breed_data">
+                      <img class="center" id="breed_image" src="" />
+                      <p id="under-image-text">
+                        Ready to retrieve you data!
+                      </p>
+                      <br>
+                      <p id="tableKey"></p>
+                      <table class="table border" id="breed_data_table">
+                      </table>
+                    </div>
+                </div>
+             </div>
+         </div>
+     </div>
+     <div id="gifImage" class=""></div>
+
+    <!--jQuery link-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascript/bootstrap-extension.js"></script>
+    <script src="javascript/cat-logic.js" type="text/javascript"></script>
+</body>
+</html>
