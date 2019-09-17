@@ -99,7 +99,7 @@ function getDogByBreed(breed_id) {
     description = data[0].breeds[0].description;
     dogData.push(description);
 //use nameToGet for ajax call to giphy
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + name + '&api_key=7ilylj0XRkujsH92cnfoMuyrE6DNoy9z&limit=5';
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + name + '&api_key=7ilylj0XRkujsH92cnfoMuyrE6DNoy9z&limit=4';
     console.log(queryURL) 
     $.ajax({
       url: queryURL,
@@ -111,7 +111,7 @@ function getDogByBreed(breed_id) {
       var myArray = results.data
       for (var j = 0; j <myArray.length; j++){
         console.log(myArray[j].url); 
-      var gifURL = myArray[j].images.fixed_height_small.url; 
+      var gifURL = myArray[j].images.fixed_height.url; 
       var gif = $('<img>'); 
       gif.attr('src', gifURL); 
       $("#gifImage").append(gif);  
@@ -139,6 +139,7 @@ function clearBreed() {
 function displayBreed(image) {
   $('#breed_image').attr('src', image.url);
   $("#breed_data_table tr").remove();
+  $("#gifImage").addClass("p-4 border");
 
   console.log(dogData);
 
