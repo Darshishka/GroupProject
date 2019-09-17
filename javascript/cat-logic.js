@@ -22,14 +22,13 @@ function getBreeds() {
 
 }
 }
-// Made to demonstrate how to use JQuery and TheDogAPI to load breed list, and show a breed image and data on selection. Any questions hit me up at - https://forum.thatapiguy.com - Aden
+// Made to demonstrate how to use JQuery and TheCatAPI to load breed list, and show a breed image and data on selection. Any questions hit me up at - https://forum.thatapiguy.com - Aden
 
-var dogName;
+var catName;
 
 $('#breed_search').on('input', function(e) {
   var search_str = $(this).val();
   searchBreeds(search_str);
-  // Giphy API 
 });
 
 function searchBreeds(search_str) {
@@ -38,8 +37,8 @@ function searchBreeds(search_str) {
   for (var i = 0; i < breeds.length; i++) { // loop through all the breeds in order
     var breed_name_snippet = breeds[i].name.substr(0, string_length).toLowerCase(); // get the first few cahracters of the name
     if (breed_name_snippet == search_str) {
-      getDogByBreed(breeds[i].id) // show the breed just as we did in the Select demo
-      dogName = breeds[i].name;
+      getCatByBreed(breeds[i].id) // show the breed just as we did in the Select demo
+      catName = breeds[i].name;
       return; // return the function so we don't keep searching
     }
   }
@@ -48,11 +47,11 @@ function searchBreeds(search_str) {
 var $breed_select = $('select.breed_select');
 $breed_select.change(function() {
   var id = $(this).children(":selected").attr("id");
-  getDogByBreed(id)
+  getCatByBreed(id)
 });
 // Load all the Breeds
 function getBreeds() {
-  ajax_get('https://api.thedogapi.com/v1/breeds', function(data) {
+  ajax_get('https://api.thecatapi.com/v1/breeds', function(data) {
     populateBreedsSelect(data)
     breeds = data;
     console.log(breeds);
@@ -70,55 +69,64 @@ function populateBreedsSelect(breeds) {
 }
 
 var name;
-var temperament;
-var breedClass;
-var bredFor;
-var lifeSpan;
-var height;
-var weight;
 var description;
-var dataTitle = ["Breed Name", "Temperament", "Breed Class", "Bred For", "Life Span", "Height (in)", "Weight (lbs)", "Breed Description"];
-var dogData = [];
+var temperament;
+var lifeSpan;
+var weight;
+var hypoallergenic;
+var adaptability;
+var affection;
+var childFriendly;
+var dogFriendly;
+var catFriendly;
+var energy;
+var intelligence;
+var shedding;
+var vocalisation;
+var dataTitle = ["Breed", "Description", "Temperment", "Life Span", "Weight (lbs)", "Hypoallergenic", "Adaptability", "Affection", "Child Friendly", "Dog Friendly", "Cat Friendly", "Energy", "Intelligence", "Shedding", "Vocalization"];
+var catData = [];
 // triggered when the breed select control changes
-function getDogByBreed(breed_id) {
-  dogData = [];
+function getCatByBreed(breed_id) {
+  catData = [];
   // search for images that contain the breed (breed_id=) and attach the breed object (include_breed=1)
-  ajax_get('https://api.thedogapi.com/v1/images/search?include_breed=1&breed_id=' + breed_id, function(data) {
+  ajax_get('https://api.thecatapi.com/v1/images/search?include_breed=1&breed_id=' + breed_id, function(data) {
     name = data[0].breeds[0].name;
-    dogData.push(name);
-    temperament = data[0].breeds[0].temperament;
-    dogData.push(temperament);
-    breedClass = data[0].breeds[0].bredFor;
-    dogData.push(bredFor);
-    lifeSpan = data[0].breeds[0].life_span;
-    dogData.push(lifeSpan);
-    height = data[0].breeds[0].height.imperial;
-    dogData.push(height);
-    weight = data[0].breeds[0].weight.imperial;
-    dogData.push(weight);
+    catData.push(name);
     description = data[0].breeds[0].description;
-    dogData.push(description);
+    catData.push(description);
+    temperament = data[0].breeds[0].temperament;
+    catData.push(temperament);
+    lifeSpan = data[0].breeds[0].life_span;
+    catData.push(lifeSpan);
+    weight = data[0].breeds[0].weight.imperial;
+    catData.push(weight);
+    hypoallergenic = data[0].breeds[0].hypoallergenic;
+    if (hypoallergenic == 0) {
+      hypoallergenic = "No";
+      catData.push(hypoallergenic);
+    } else if (hypoallergenic == 1) {
+      hypoallergenic = "Yes";
+      catData.push(hypoallergenic);
+    }
+    adaptability = data[0].breeds[0].adaptability;
+    catData.push(adaptability);
+    affection = data[0].breeds[0].affection_level;
+    catData.push(affection);
+    childFriendly = data[0].breeds[0].child_friendly;
+    catData.push(childFriendly);
+    dogFriendly = data[0].breeds[0].dog_friendly;
+    catData.push(dogFriendly);
+    catFriendly = data[0].breeds[0].cat_friendly;
+    catData.push(catFriendly);
+    energy = data[0].breeds[0].energy_level;
+    catData.push(energy);
+    intelligence = data[0].breeds[0].intelligence;
+    catData.push(intelligence);
+    shedding = data[0].breeds[0].shedding;
+    catData.push(shedding);
+    vocalisation = data[0].breeds[0].vocalisation;
+    catData.push(vocalisation);
 //use nameToGet for ajax call to giphy
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + name + '&api_key=7ilylj0XRkujsH92cnfoMuyrE6DNoy9z&limit=5';
-    console.log(queryURL) 
-    $.ajax({
-      url: queryURL,
-      method: "GET" 
-    }) 
-    .then(function(results){
-      $('#gifImage').empty();
-      console.log(results.data) 
-      var myArray = results.data
-      for (var j = 0; j <myArray.length; j++){
-        console.log(myArray[j].url); 
-      var gifURL = myArray[j].images.fixed_height_small.url; 
-      var gif = $('<img>'); 
-      gif.attr('src', gifURL); 
-      $("#gifImage").append(gif);  
-      }
-    }) 
-
-
     $("#under-image-text").empty();
     if (data.length == 0) {
       // if there are no images returned
@@ -140,10 +148,10 @@ function displayBreed(image) {
   $('#breed_image').attr('src', image.url);
   $("#breed_data_table tr").remove();
 
-  console.log(dogData);
+  console.log(catData);
 
-  for (var i = 0; i < 7; i++) {
-    $("#breed_data_table").append("<tr><td>" + dataTitle[i] + "</td><td>" + dogData[i] + "</td></tr>")
+  for (var i = 0; i < 15; i++) {
+    $("#breed_data_table").append("<tr><td>" + dataTitle[i] + "</td><td>" + catData[i] + "</td></tr>")
   }
 
   // var breed_data = image.breeds[0]
@@ -155,8 +163,6 @@ function displayBreed(image) {
   // });
 }
 
-// call the getBreeds function which will load all the Dog breeds into the select control
+// call the getBreeds function which will load all the Cat breeds into the select control
 getBreeds();
-
-
 
